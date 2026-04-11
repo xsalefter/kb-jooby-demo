@@ -65,6 +65,20 @@ public class DemoAppTest {
     verifyCrudFlow("/jaxrs/items");
   }
 
+  @Test
+  public void shouldStreamServerSentEvents() throws Exception {
+    HttpResponse<String> response = send("GET", "/api/items/events", null, "text/event-stream");
+    assertEquals(200, response.statusCode());
+    assertTrue(response.headers().firstValue("Content-Type").orElse("")
+        .toLowerCase().contains("text/event-stream"));
+    assertTrue(response.body().contains("event: status") || response.body().contains("event:status"));
+    assertTrue(response.body().contains("id: 1") || response.body().contains("id:1"));
+    assertTrue(response.body().contains("data: stream-started") || response.body().contains("data:stream-started"));
+    assertTrue(response.body().contains("event: message") || response.body().contains("event:message"));
+    assertTrue(response.body().contains("id: 2") || response.body().contains("id:2"));
+    assertTrue(response.body().contains("data: items-endpoint-ready") || response.body().contains("data:items-endpoint-ready"));
+  }
+
   private void verifyCrudFlow(final String basePath) throws Exception {
     long itemId;
 

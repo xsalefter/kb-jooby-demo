@@ -7,6 +7,7 @@ public class DemoApp extends Jooby {
 
   public DemoApp() {
     use(new Jackson());
+    new ItemEventsEndpoint().install(this);
 
     use(HomePageResource.class);
     use(ItemListEndpoint.class);
