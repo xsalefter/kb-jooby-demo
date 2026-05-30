@@ -12,15 +12,15 @@ import jakarta.inject.Inject;
 @Produces("application/json")
 public class ItemListEndpoint {
 
-  private final ItemService itemService;
+    private final ItemService itemService;
 
-  @Inject
-  public ItemListEndpoint(final ItemService itemService) {
-    this.itemService = itemService;
-  }
+    @Inject
+    public ItemListEndpoint(final ItemService itemService) {
+        this.itemService = itemService;
+    }
 
-  @GET
-  public List<Item> list() {
-    return itemService.list();
-  }
+    @GET
+    public List<Item> list() {
+        return itemService.list();
+    }
 }

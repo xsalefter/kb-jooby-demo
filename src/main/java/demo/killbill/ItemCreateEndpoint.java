@@ -15,16 +15,16 @@ import jakarta.inject.Inject;
 @Produces("application/json")
 public class ItemCreateEndpoint {
 
-  private final ItemService itemService;
+    private final ItemService itemService;
 
-  @Inject
-  public ItemCreateEndpoint(final ItemService itemService) {
-    this.itemService = itemService;
-  }
+    @Inject
+    public ItemCreateEndpoint(final ItemService itemService) {
+        this.itemService = itemService;
+    }
 
-  @POST
-  @Consumes("application/json")
-  public Result create(final @Body ItemPayload payload) {
-    return Results.with(itemService.create(payload)).status(Status.CREATED);
-  }
+    @POST
+    @Consumes("application/json")
+    public Result create(final @Body ItemPayload payload) {
+        return Results.with(itemService.create(payload)).status(Status.CREATED);
+    }
 }

@@ -25,54 +25,54 @@ import jakarta.inject.Singleton;
 @jakarta.ws.rs.Produces(jakarta.ws.rs.core.MediaType.APPLICATION_JSON)
 public class JaxRsItemsResource {
 
-  private final ItemService itemService;
+    private final ItemService itemService;
 
-  @Inject
-  public JaxRsItemsResource(final ItemService itemService) {
-    this.itemService = itemService;
-  }
+    @Inject
+    public JaxRsItemsResource(final ItemService itemService) {
+        this.itemService = itemService;
+    }
 
-  @GET
-  @jakarta.ws.rs.GET
-  public List<Item> list() {
-    return itemService.list();
-  }
+    @GET
+    @jakarta.ws.rs.GET
+    public List<Item> list() {
+        return itemService.list();
+    }
 
-  @POST
-  @jakarta.ws.rs.POST
-  @Consumes("application/json")
-  @jakarta.ws.rs.Consumes(jakarta.ws.rs.core.MediaType.APPLICATION_JSON)
-  public Result create(final @Body ItemPayload payload) {
-    return Results.with(itemService.create(payload)).status(Status.CREATED);
-  }
+    @POST
+    @jakarta.ws.rs.POST
+    @Consumes("application/json")
+    @jakarta.ws.rs.Consumes(jakarta.ws.rs.core.MediaType.APPLICATION_JSON)
+    public Result create(final @Body ItemPayload payload) {
+        return Results.with(itemService.create(payload)).status(Status.CREATED);
+    }
 
-  @GET
-  @jakarta.ws.rs.GET
-  @Path("/{id}")
-  @jakarta.ws.rs.Path("/{id}")
-  public Item get(final Request request) {
-    long id = request.param("id").longValue();
-    return itemService.get(id);
-  }
+    @GET
+    @jakarta.ws.rs.GET
+    @Path("/{id}")
+    @jakarta.ws.rs.Path("/{id}")
+    public Item get(final Request request) {
+        long id = request.param("id").longValue();
+        return itemService.get(id);
+    }
 
-  @PUT
-  @jakarta.ws.rs.PUT
-  @Path("/{id}")
-  @jakarta.ws.rs.Path("/{id}")
-  @Consumes("application/json")
-  @jakarta.ws.rs.Consumes(jakarta.ws.rs.core.MediaType.APPLICATION_JSON)
-  public Item update(final Request request, final @Body ItemPayload payload) {
-    long id = request.param("id").longValue();
-    return itemService.update(id, payload);
-  }
+    @PUT
+    @jakarta.ws.rs.PUT
+    @Path("/{id}")
+    @jakarta.ws.rs.Path("/{id}")
+    @Consumes("application/json")
+    @jakarta.ws.rs.Consumes(jakarta.ws.rs.core.MediaType.APPLICATION_JSON)
+    public Item update(final Request request, final @Body ItemPayload payload) {
+        long id = request.param("id").longValue();
+        return itemService.update(id, payload);
+    }
 
-  @DELETE
-  @jakarta.ws.rs.DELETE
-  @Path("/{id}")
-  @jakarta.ws.rs.Path("/{id}")
-  public Result delete(final Request request) {
-    long id = request.param("id").longValue();
-    itemService.delete(id);
-    return Results.with(Status.NO_CONTENT);
-  }
+    @DELETE
+    @jakarta.ws.rs.DELETE
+    @Path("/{id}")
+    @jakarta.ws.rs.Path("/{id}")
+    public Result delete(final Request request) {
+        long id = request.param("id").longValue();
+        itemService.delete(id);
+        return Results.with(Status.NO_CONTENT);
+    }
 }

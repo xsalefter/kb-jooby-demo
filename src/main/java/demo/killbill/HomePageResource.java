@@ -11,13 +11,13 @@ import org.jooby.mvc.Produces;
 @Produces("text/html")
 public class HomePageResource {
 
-  @GET
-  public Result index() {
-    return Results.with(
-        "<!DOCTYPE html><html><head><title>Kill Bill Jooby Demo</title></head>"
-            + "<body><h1>Kill Bill Jooby Demo</h1>"
-            + "<p>This page is served by the ported killbill-jooby module.</p>"
-            + "</body></html>")
-        .type(MediaType.html);
-  }
+    @GET
+    public Result index() {
+        return Results.with(
+                        "<!DOCTYPE html><html><head><title>Kill Bill Jooby Demo</title></head>"
+                                + "<body><h1>Kill Bill Jooby Demo</h1>"
+                                + "<p>This page is served by the ported killbill-jooby module.</p>"
+                                + "</body></html>")
+                .type(MediaType.html);
+    }
 }

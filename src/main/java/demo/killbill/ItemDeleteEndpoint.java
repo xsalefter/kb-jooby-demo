@@ -12,17 +12,17 @@ import jakarta.inject.Inject;
 @Path("/api/items/{id}")
 public class ItemDeleteEndpoint {
 
-  private final ItemService itemService;
+    private final ItemService itemService;
 
-  @Inject
-  public ItemDeleteEndpoint(final ItemService itemService) {
-    this.itemService = itemService;
-  }
+    @Inject
+    public ItemDeleteEndpoint(final ItemService itemService) {
+        this.itemService = itemService;
+    }
 
-  @DELETE
-  public Result delete(final Request request) {
-    long id = request.param("id").longValue();
-    itemService.delete(id);
-    return Results.with(Status.NO_CONTENT);
-  }
+    @DELETE
+    public Result delete(final Request request) {
+        long id = request.param("id").longValue();
+        itemService.delete(id);
+        return Results.with(Status.NO_CONTENT);
+    }
 }

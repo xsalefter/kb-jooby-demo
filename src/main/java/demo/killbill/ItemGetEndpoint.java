@@ -11,16 +11,16 @@ import jakarta.inject.Inject;
 @Produces("application/json")
 public class ItemGetEndpoint {
 
-  private final ItemService itemService;
+    private final ItemService itemService;
 
-  @Inject
-  public ItemGetEndpoint(final ItemService itemService) {
-    this.itemService = itemService;
-  }
+    @Inject
+    public ItemGetEndpoint(final ItemService itemService) {
+        this.itemService = itemService;
+    }
 
-  @GET
-  public Item get(final Request request) {
-    long id = request.param("id").longValue();
-    return itemService.get(id);
-  }
+    @GET
+    public Item get(final Request request) {
+        long id = request.param("id").longValue();
+        return itemService.get(id);
+    }
 }

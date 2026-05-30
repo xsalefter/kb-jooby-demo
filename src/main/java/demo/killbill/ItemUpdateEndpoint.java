@@ -13,17 +13,17 @@ import jakarta.inject.Inject;
 @Produces("application/json")
 public class ItemUpdateEndpoint {
 
-  private final ItemService itemService;
+    private final ItemService itemService;
 
-  @Inject
-  public ItemUpdateEndpoint(final ItemService itemService) {
-    this.itemService = itemService;
-  }
+    @Inject
+    public ItemUpdateEndpoint(final ItemService itemService) {
+        this.itemService = itemService;
+    }
 
-  @PUT
-  @Consumes("application/json")
-  public Item update(final Request request, final @Body ItemPayload payload) {
-    long id = request.param("id").longValue();
-    return itemService.update(id, payload);
-  }
+    @PUT
+    @Consumes("application/json")
+    public Item update(final Request request, final @Body ItemPayload payload) {
+        long id = request.param("id").longValue();
+        return itemService.update(id, payload);
+    }
 }
